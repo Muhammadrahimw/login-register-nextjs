@@ -1,0 +1,18 @@
+[
+	{
+		"firstAuth": [
+			{
+				"id": "1",
+				"name": "muhammadrahim",
+				"email": "muqalla21@gmail.com",
+				"password": "12345"
+			},
+			{   
+				"id": "2",
+				"name": "muhammadrahim2",
+				"email": "muqalla212@gmail.com",
+				"password": "12345"
+			}
+		]
+	}
+]
