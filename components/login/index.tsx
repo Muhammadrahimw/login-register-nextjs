@@ -18,6 +18,7 @@ export const LoginComponent = () => {
 				`https://6759b459099e3090dbe2a4ae.mockapi.io/data/users`
 			);
 			setIsloading(false);
+			localStorage.setItem(`token`, `entered`);
 			return response.data;
 		} catch (error) {
 			setIsloading(false);
@@ -45,6 +46,8 @@ export const LoginComponent = () => {
 					return alert(`Your password is not correct`);
 				}
 
+				localStorage.setItem(`token`, `entered`);
+				localStorage.setItem(`name`, `${user?.name}`);
 				router.push(`/`);
 			});
 		} else {
@@ -75,12 +78,20 @@ export const LoginComponent = () => {
 					className="pl-3 w-full h-10 rounded border border-gray-300 outline-none"
 				/>
 			</div>
-			<button
-				onClick={loginFunc}
-				type="button"
-				className="mt-6 rounded bg-black text-white w-full h-10 flex items-center justify-center">
-				{isLoading ? <Loader2 className="animate-spin" /> : "Sign in"}
-			</button>
+			<div className="w-full mt-6 flex items-center justify-between gap-2">
+				<button
+					onClick={loginFunc}
+					type="button"
+					className="rounded bg-black text-white w-full h-10 flex items-center justify-center">
+					{isLoading ? <Loader2 className="animate-spin" /> : "Sign in"}
+				</button>
+				<button
+					onClick={() => router.push(`/register`)}
+					type="button"
+					className="w-[8em] bg-black h-10 rounded text-white">
+					Sign up
+				</button>
+			</div>
 		</section>
 	);
 };

@@ -21,6 +21,8 @@ export const RegisterComponent = () => {
 				data
 			);
 			setIsloading(false);
+			localStorage.setItem(`token`, `entered`);
+			localStorage.setItem(`name`, `${data?.name}`);
 			router.push(`/`);
 		} catch (error) {
 			setIsloading(false);
@@ -70,12 +72,20 @@ export const RegisterComponent = () => {
 					className="pl-3 w-full h-10 rounded border border-gray-300 outline-none"
 				/>
 			</div>
-			<button
-				onClick={registerFunc}
-				type="button"
-				className="mt-6 rounded bg-black text-white w-full h-10 flex items-center justify-center">
-				{isLoading ? <Loader2 className="animate-spin" /> : "Sign in"}
-			</button>
+			<div className="w-full mt-6 flex items-center justify-between gap-2">
+				<button
+					onClick={registerFunc}
+					type="button"
+					className="rounded bg-black text-white w-full h-10 flex items-center justify-center">
+					{isLoading ? <Loader2 className="animate-spin" /> : "Sign up"}
+				</button>
+				<button
+					onClick={() => router.push(`/login`)}
+					type="button"
+					className="w-[8em] bg-black h-10 rounded text-white">
+					Sign in
+				</button>
+			</div>
 		</section>
 	);
 };
